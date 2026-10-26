@@ -107,28 +107,25 @@
     </script>
     <script>
       (() => {
-        const images = document.querySelectorAll(".story-photo img, .post-art img, .post-body img");
-        for (const image of images) {
+        for (const canvas of document.querySelectorAll("canvas[data-canvas-image]")) {
+          const image = canvas.previousElementSibling;
+          if (!(image instanceof HTMLImageElement)) continue;
+
           const drawToCanvas = () => {
             if (!image.naturalWidth || !image.naturalHeight) return;
             const scale = Math.min(1, 1600 / Math.max(image.naturalWidth, image.naturalHeight));
-            const canvas = document.createElement("canvas");
-            canvas.className = image.className;
             canvas.width = Math.round(image.naturalWidth * scale);
             canvas.height = Math.round(image.naturalHeight * scale);
-            canvas.setAttribute("role", "img");
-            if (image.alt) canvas.setAttribute("aria-label", image.alt);
-            canvas.addEventListener("contextmenu", (event) => event.preventDefault());
-            canvas.addEventListener("dragstart", (event) => event.preventDefault());
-
             const context = canvas.getContext("2d");
             if (!context) return;
             context.drawImage(image, 0, 0, canvas.width, canvas.height);
-            image.replaceWith(canvas);
+            canvas.parentElement.classList.add("is-ready");
           };
 
-          image.addEventListener("contextmenu", (event) => event.preventDefault());
-          image.addEventListener("dragstart", (event) => event.preventDefault());
+          for (const element of [image, canvas]) {
+            element.addEventListener("contextmenu", (event) => event.preventDefault());
+            element.addEventListener("dragstart", (event) => event.preventDefault());
+          }
           if (image.complete) drawToCanvas();
           else image.addEventListener("load", drawToCanvas, { once: true });
         }
