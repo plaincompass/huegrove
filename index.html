@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f0e8">
+  <meta name="description" content="A quiet collection of colors, places, and the feelings they leave behind.">
+  <link rel="canonical" href="https://plaincompass.github.io/huegrove/">
+  <title>huegrove — A little world of color and place.</title>
+  <script>
+    (() => {
+      const root = document.documentElement;
+      try {
+        const saved = localStorage.getItem("huegrove-theme");
+        if (saved === "light" || saved === "dark") root.dataset.theme = saved;
+      } catch {}
+      document.addEventListener("DOMContentLoaded", () => {
+        const toggle = document.querySelector("#theme-toggle");
+        if (!toggle) return;
+        toggle.checked = root.dataset.theme === "dark";
+        toggle.addEventListener("change", () => {
+          const theme = toggle.checked ? "dark" : "light";
+          root.dataset.theme = theme;
+          try {
+            localStorage.setItem("huegrove-theme", theme);
+          } catch {}
+        });
+      });
+    })();
+  </script>
+  <link rel="stylesheet" href="/huegrove/styles.css">
+</head>
+<body>
+  <input class="theme-toggle-input" id="theme-toggle" type="checkbox" aria-label="Enable dark mode">
+  <div class="site-shell">
+    <header class="site-header">
+      <a class="wordmark" href="/huegrove/"><span class="wordmark-dot"></span>huegrove</a>
+      <div class="header-note">a little world of color and place</div>
+      <label class="theme-toggle" for="theme-toggle" aria-label="Toggle dark mode">
+        <span class="sun" aria-hidden="true">☼</span><span class="switch"></span><span class="moon" aria-hidden="true">☾</span>
+      </label>
+    </header>
+    <main>
+    <section class="intro">
+      <p class="eyebrow"><span></span> A journal in color</p>
+      <h1>Some places<br>feel like <em>a color.</em></h1>
+      <p class="intro-copy">Little notes on the places we wander through, the colors we carry home, and everything in between.</p>
+      <p class="sample-notice">A visual demo · sample notes to make this little world feel lived in</p>
+      <a class="scroll-note" href="#stories"><span class="scroll-line"></span>Wander a little</a>
+      <span class="intro-orb intro-orb-one" aria-hidden="true"></span>
+      <span class="intro-orb intro-orb-two" aria-hidden="true"></span>
+    </section>
+    <section class="stories" id="stories">
+      <div class="section-heading"><div><p class="eyebrow">The color index</p><h2>Postcards from elsewhere</h2></div><span>03 little moments</span></div>
+      <div class="story-grid">
+    <a class="story-card story-card-0" href="/huegrove/posts/blue-hour/" style="--story-color:#54758b">
+      <span class="story-art" aria-hidden="true"><span></span><i></i></span>
+      <span class="story-copy">
+        <span class="story-place">Somewhere by the sea <span>·</span> A late summer evening</span>
+        <span class="story-title">The blue hour by the water</span>
+        <span class="story-mood">salt air · slow steps · almost night</span>
+      </span>
+      <span class="story-arrow" aria-hidden="true">↗</span>
+    </a>
+    <a class="story-card story-card-1" href="/huegrove/posts/green-between-trains/" style="--story-color:#71816a">
+      <span class="story-art" aria-hidden="true"><span></span><i></i></span>
+      <span class="story-copy">
+        <span class="story-place">A small station in the hills <span>·</span> An almost-rainy afternoon</span>
+        <span class="story-title">The green between trains</span>
+        <span class="story-mood">fresh leaves · distant rails · a pocket of quiet</span>
+      </span>
+      <span class="story-arrow" aria-hidden="true">↗</span>
+    </a>
+    <a class="story-card story-card-2" href="/huegrove/posts/terracotta-morning/" style="--story-color:#c87958">
+      <span class="story-art" aria-hidden="true"><span></span><i></i></span>
+      <span class="story-copy">
+        <span class="story-place">A hillside neighborhood <span>·</span> One warm morning</span>
+        <span class="story-title">A morning in terracotta</span>
+        <span class="story-mood">sun-warmed walls · citrus · open windows</span>
+      </span>
+      <span class="story-arrow" aria-hidden="true">↗</span>
+    </a></div>
+    </section>
+    <section class="closing-note"><span class="closing-sparkle" aria-hidden="true">✳</span><p>Keep a little room<br>for wonder.</p><span>Take the scenic route.</span></section></main>
+    <footer class="site-footer">
+      <a class="wordmark" href="/huegrove/"><span class="wordmark-dot"></span>huegrove</a>
+      <p>For the places that stay in color.</p>
+      <span>© 2026 huegrove</span>
+    </footer>
+  </div>
+</body>
+</html>

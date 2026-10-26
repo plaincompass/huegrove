@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f0e8">
+  <meta name="description" content="sun-warmed walls · citrus · open windows">
+  <link rel="canonical" href="https://plaincompass.github.io/huegrove/posts/terracotta-morning/">
+  <title>A morning in terracotta — huegrove</title>
+  <script>
+    (() => {
+      const root = document.documentElement;
+      try {
+        const saved = localStorage.getItem("huegrove-theme");
+        if (saved === "light" || saved === "dark") root.dataset.theme = saved;
+      } catch {}
+      document.addEventListener("DOMContentLoaded", () => {
+        const toggle = document.querySelector("#theme-toggle");
+        if (!toggle) return;
+        toggle.checked = root.dataset.theme === "dark";
+        toggle.addEventListener("change", () => {
+          const theme = toggle.checked ? "dark" : "light";
+          root.dataset.theme = theme;
+          try {
+            localStorage.setItem("huegrove-theme", theme);
+          } catch {}
+        });
+      });
+    })();
+  </script>
+  <link rel="stylesheet" href="/huegrove/styles.css">
+</head>
+<body>
+  <input class="theme-toggle-input" id="theme-toggle" type="checkbox" aria-label="Enable dark mode">
+  <div class="site-shell">
+    <header class="site-header">
+      <a class="wordmark" href="/huegrove/"><span class="wordmark-dot"></span>huegrove</a>
+      <div class="header-note">a little world of color and place</div>
+      <label class="theme-toggle" for="theme-toggle" aria-label="Toggle dark mode">
+        <span class="sun" aria-hidden="true">☼</span><span class="switch"></span><span class="moon" aria-hidden="true">☾</span>
+      </label>
+    </header>
+    <main>
+    <article class="post-page" style="--story-color:#c87958">
+      <a class="back-link" href="/huegrove/">← Back to the grove</a>
+      <header class="post-heading">
+        <p class="eyebrow">A hillside neighborhood <span>·</span> One warm morning</p>
+        <h1>A morning in terracotta</h1>
+        <p class="post-mood">sun-warmed walls · citrus · open windows</p>
+        <p class="sample-notice">A visual demo · a mood note, not a factual place guide</p>
+      </header>
+      <div class="post-art" aria-hidden="true"><span></span><i></i></div>
+      <div class="post-body"><p>Morning arrived slowly, slipping across tiled roofs and peach-colored walls.</p>
+<p>Somewhere nearby, coffee was being poured. A window opened. A curtain moved in the breeze, and the whole street seemed to take one unhurried breath.</p>
+<p>I remember the color more than the map: a soft, sunlit terracotta that followed me home.</p>
+</div>
+      <nav class="post-navigation" aria-label="More postcards"><a href="/huegrove/posts/green-between-trains/">← The green between trains</a><a href="/huegrove/">All postcards</a></nav>
+    </article></main>
+    <footer class="site-footer">
+      <a class="wordmark" href="/huegrove/"><span class="wordmark-dot"></span>huegrove</a>
+      <p>For the places that stay in color.</p>
+      <span>© 2026 huegrove</span>
+    </footer>
+  </div>
+</body>
+</html>

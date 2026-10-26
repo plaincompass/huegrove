@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f0e8">
+  <meta name="description" content="salt air · slow steps · almost night">
+  <link rel="canonical" href="https://plaincompass.github.io/huegrove/posts/blue-hour/">
+  <title>The blue hour by the water — huegrove</title>
+  <script>
+    (() => {
+      const root = document.documentElement;
+      try {
+        const saved = localStorage.getItem("huegrove-theme");
+        if (saved === "light" || saved === "dark") root.dataset.theme = saved;
+      } catch {}
+      document.addEventListener("DOMContentLoaded", () => {
+        const toggle = document.querySelector("#theme-toggle");
+        if (!toggle) return;
+        toggle.checked = root.dataset.theme === "dark";
+        toggle.addEventListener("change", () => {
+          const theme = toggle.checked ? "dark" : "light";
+          root.dataset.theme = theme;
+          try {
+            localStorage.setItem("huegrove-theme", theme);
+          } catch {}
+        });
+      });
+    })();
+  </script>
+  <link rel="stylesheet" href="/huegrove/styles.css">
+</head>
+<body>
+  <input class="theme-toggle-input" id="theme-toggle" type="checkbox" aria-label="Enable dark mode">
+  <div class="site-shell">
+    <header class="site-header">
+      <a class="wordmark" href="/huegrove/"><span class="wordmark-dot"></span>huegrove</a>
+      <div class="header-note">a little world of color and place</div>
+      <label class="theme-toggle" for="theme-toggle" aria-label="Toggle dark mode">
+        <span class="sun" aria-hidden="true">☼</span><span class="switch"></span><span class="moon" aria-hidden="true">☾</span>
+      </label>
+    </header>
+    <main>
+    <article class="post-page" style="--story-color:#54758b">
+      <a class="back-link" href="/huegrove/">← Back to the grove</a>
+      <header class="post-heading">
+        <p class="eyebrow">Somewhere by the sea <span>·</span> A late summer evening</p>
+        <h1>The blue hour by the water</h1>
+        <p class="post-mood">salt air · slow steps · almost night</p>
+        <p class="sample-notice">A visual demo · a mood note, not a factual place guide</p>
+      </header>
+      <div class="post-art" aria-hidden="true"><span></span><i></i></div>
+      <div class="post-body"><p>The day loosened its hold on the shore one shade at a time.</p>
+<p>Everything turned blue: the water, the little boats, even the quiet between one wave and the next. We stayed until the lamps along the promenade began to glow like small, patient moons.</p>
+<p>No plans, no hurry. Just the soft feeling of being exactly where the evening wanted us.</p>
+</div>
+      <nav class="post-navigation" aria-label="More postcards"><a href="/huegrove/">All postcards</a><a href="/huegrove/posts/green-between-trains/">The green between trains →</a></nav>
+    </article></main>
+    <footer class="site-footer">
+      <a class="wordmark" href="/huegrove/"><span class="wordmark-dot"></span>huegrove</a>
+      <p>For the places that stay in color.</p>
+      <span>© 2026 huegrove</span>
+    </footer>
+  </div>
+</body>
+</html>
