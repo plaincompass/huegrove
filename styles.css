@@ -73,7 +73,9 @@ h1, h2 { font-family: "Playfair Display", Georgia, serif; font-weight: 500; }
 .story-glass > * { position: relative; }
 :root[data-theme="dark"] .story-glass { background: linear-gradient(125deg, rgb(220 222 211 / 22%), rgb(36 43 39 / 34%) 50%, rgb(220 222 211 / 12%)); box-shadow: 0 8px 26px rgb(0 0 0 / 22%); color: #f1ecdf; -webkit-backdrop-filter: blur(20px) saturate(115%); backdrop-filter: blur(20px) saturate(115%); }
 .story-meta { color: var(--accent); font-size: 9px; letter-spacing: .12em; text-transform: uppercase; }
-.story-meta span { padding-inline: 4px; }
+.story-meta > span:not(.weather) { padding-inline: 4px; }
+.weather { display: inline-flex; align-items: center; gap: 6px; color: currentColor; font-size: 11px; letter-spacing: .04em; }
+.weather-icon { font-size: 14px; line-height: 1; }
 .story-colors { display: flex; flex-direction: row; align-items: center; gap: 5px; }
 .color-chip { display: block; width: 34px; height: 12px; border-radius: 2px; background: var(--chip-color); }
 :root[data-theme="dark"] .color-chip { border-color: rgb(255 255 255 / 25%); }
@@ -94,6 +96,7 @@ h1, h2 { font-family: "Playfair Display", Georgia, serif; font-weight: 500; }
 .post-heading { padding: 62px 0 30px; text-align: center; }
 .post-heading h1 { margin: 16px 0 11px; font-size: clamp(42px, 7vw, 72px); line-height: 1.03; letter-spacing: -.05em; }
 .post-heading .eyebrow span { padding-inline: 8px; }
+.post-heading .weather { margin-top: 12px; color: var(--muted); }
 .post-mood { color: var(--muted); font-size: 13px; letter-spacing: .06em; }
 .post-art { min-height: clamp(250px, 45vw, 440px); border-radius: 2px; }
 .post-art span { top: 14%; right: 20%; width: clamp(54px, 9vw, 94px); height: clamp(54px, 9vw, 94px); }
