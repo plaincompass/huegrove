@@ -55,7 +55,7 @@
     <article class="post-page" style="--story-color:#54758b">
       <a class="back-link" href="/huegrove/">← Back to the grove</a>
       <header class="post-heading">
-        <p class="eyebrow">장소 이름 <span>·</span> A late summer evening</p>
+        <p class="eyebrow">South Korea <span>·</span> 장소 이름 <span>·</span> 2026-05</p>
         <p class="weather"><span class="weather-icon" aria-hidden="true">☀️</span>Sunny</p>
         <h1>The blue hour by the water</h1>
         <p class="post-mood">salt air · slow steps · almost night</p>
@@ -63,6 +63,9 @@
         <p class="sample-notice">A visual demo · a mood note, not a factual place guide</p>
       </header>
       <div class="post-art" aria-hidden="true"><span></span><i></i></div>
+      <div class="post-palette" role="img" aria-label="Color palette: #54758b, #b7b6a4, #d4aa80">
+        <span class="color-chip" style="--chip-color:#54758b" title="#54758b"></span><span class="color-chip" style="--chip-color:#b7b6a4" title="#b7b6a4"></span><span class="color-chip" style="--chip-color:#d4aa80" title="#d4aa80"></span>
+      </div>
       <div class="post-body"><p>The day loosened its hold on the shore one shade at a time.</p>
 <p>Everything turned blue: the water, the little boats, even the quiet between one wave and the next. We stayed until the lamps along the promenade began to glow like small, patient moons.</p>
 <p>No plans, no hurry. Just the soft feeling of being exactly where the evening wanted us.</p>
@@ -94,5 +97,26 @@
       <span>© 2026 Hue Grove</span>
     </footer>
   </div>
+    <script>
+      (() => {
+        const form = document.querySelector("#story-filters");
+        const count = document.querySelector("#story-filter-count");
+        const cards = [...document.querySelectorAll(".story-card")];
+        if (!form || !count || cards.length === 0) return;
+
+        const filters = [...form.querySelectorAll("select[data-filter]")];
+        form.addEventListener("change", () => {
+          let visible = 0;
+          for (const card of cards) {
+            const matches = filters.every((filter) => (
+              !filter.value || card.dataset[filter.dataset.filter] === filter.value
+            ));
+            card.hidden = !matches;
+            if (matches) visible += 1;
+          }
+          count.textContent = `Showing ${visible} of ${cards.length}`;
+        });
+      })();
+    </script>
 </body>
 </html>

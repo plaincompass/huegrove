@@ -63,6 +63,9 @@
         <p class="sample-notice">A visual demo · a mood note, not a factual place guide</p>
       </header>
       <div class="post-art" aria-hidden="true"><span></span><i></i></div>
+      <div class="post-palette" role="img" aria-label="Color palette: #c87958, #e1bd98, #78816a, #78816b">
+        <span class="color-chip" style="--chip-color:#c87958" title="#c87958"></span><span class="color-chip" style="--chip-color:#e1bd98" title="#e1bd98"></span><span class="color-chip" style="--chip-color:#78816a" title="#78816a"></span><span class="color-chip" style="--chip-color:#78816b" title="#78816b"></span>
+      </div>
       <div class="post-body"><p>Morning arrived slowly, slipping across tiled roofs and peach-colored walls.</p>
 <p>Somewhere nearby, coffee was being poured. A window opened. A curtain moved in the breeze, and the whole street seemed to take one unhurried breath.</p>
 <p>I remember the color more than the map: a soft, sunlit terracotta that followed me home.</p>
@@ -79,5 +82,26 @@
       <span>© 2026 Hue Grove</span>
     </footer>
   </div>
+    <script>
+      (() => {
+        const form = document.querySelector("#story-filters");
+        const count = document.querySelector("#story-filter-count");
+        const cards = [...document.querySelectorAll(".story-card")];
+        if (!form || !count || cards.length === 0) return;
+
+        const filters = [...form.querySelectorAll("select[data-filter]")];
+        form.addEventListener("change", () => {
+          let visible = 0;
+          for (const card of cards) {
+            const matches = filters.every((filter) => (
+              !filter.value || card.dataset[filter.dataset.filter] === filter.value
+            ));
+            card.hidden = !matches;
+            if (matches) visible += 1;
+          }
+          count.textContent = `Showing ${visible} of ${cards.length}`;
+        });
+      })();
+    </script>
 </body>
 </html>

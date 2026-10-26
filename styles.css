@@ -57,8 +57,21 @@ h1, h2 { font-family: "Playfair Display", Georgia, serif; font-weight: 500; }
 .section-heading { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 8px; }
 .section-heading h2 { margin: 7px 0 0; font-size: 30px; letter-spacing: -.03em; }
 .section-heading > span { color: var(--muted); }
+.story-filter-panel { display: flex; width: 100%; align-items: stretch; gap: 12px; margin-top: 24px; }
+.story-filter-toggle { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; }
+.story-filter-button { display: inline-flex; min-height: 42px; align-items: center; gap: 10px; padding: 0 15px; border: 1px solid var(--line); border-radius: 99px; background: var(--surface); color: var(--ink); cursor: pointer; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; }
+.filter-button-mark { color: var(--accent); font-size: 16px; }
+.filter-button-icon { display: grid; width: 21px; height: 21px; place-items: center; border-radius: 50%; background: var(--paper); font-size: 15px; transition: transform .2s ease; }
+.story-filter-toggle:checked + .story-filter-button .filter-button-icon { transform: rotate(45deg); }
+.story-filter-toggle:focus-visible + .story-filter-button { outline: 2px solid var(--accent); outline-offset: 3px; }
+.story-filters { display: none; min-width: 0; flex: 1; grid-template-columns: repeat(3, minmax(0, 1fr)) auto; align-items: center; gap: 12px; height: 42px; margin: 0; padding: 5px 12px; border: 1px solid var(--line); border-radius: 24px; background: color-mix(in srgb, var(--surface) 78%, var(--paper)); }
+.story-filter-toggle:checked ~ .story-filters { display: grid; }
+.filter-group { display: flex; min-width: 0; align-items: center; gap: 8px; color: var(--muted); font-size: 9px; letter-spacing: .12em; text-transform: uppercase; }
+.filter-group select { min-width: 0; width: 100%; padding: 6px 24px 6px 9px; border: 1px solid var(--line); border-radius: 16px; background: var(--surface); color: var(--ink); font: inherit; font-size: 10px; letter-spacing: normal; text-transform: none; }
+.story-filter-count { margin: 0; color: var(--muted); font-size: 10px; white-space: nowrap; }
 .story-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin: 24px 0 0; padding: 0; list-style: none; }
 .story-card { min-width: 0; }
+.story-card[hidden] { display: none; }
 .story-link { position: relative; display: block; aspect-ratio: 4 / 5; overflow: hidden; background: color-mix(in srgb, var(--story-color) 38%, var(--surface)); color: #fff; text-decoration: none; isolation: isolate; }
 .story-photo { position: absolute; inset: 0; display: block; overflow: hidden; background: linear-gradient(155deg, color-mix(in srgb, var(--story-color) 40%, #e7d7bd), color-mix(in srgb, var(--story-color) 82%, #35423e)); }
 .story-photo img { width: 100%; height: 100%; object-fit: cover; }
@@ -79,6 +92,8 @@ h1, h2 { font-family: "Playfair Display", Georgia, serif; font-weight: 500; }
 .story-colors { display: flex; flex-direction: row; align-items: center; gap: 5px; }
 .color-chip { display: block; width: 34px; height: 12px; border-radius: 2px; background: var(--chip-color); }
 :root[data-theme="dark"] .color-chip { border-color: rgb(255 255 255 / 25%); }
+.post-palette { display: flex; justify-content: center; gap: 8px; margin: 16px auto 0; }
+.post-palette .color-chip { width: 48px; height: 16px; }
 .story-title { font-family: "Playfair Display", Georgia, serif; font-size: clamp(21px, 2.7vw, 30px); line-height: 1.15; }
 .story-mood { color: currentColor; font-size: 11px; letter-spacing: .04em; opacity: .74; }
 .visit-availability { color: currentColor; font-size: 10px; letter-spacing: .08em; opacity: .75; }
@@ -121,6 +136,10 @@ h1, h2 { font-family: "Playfair Display", Georgia, serif; font-weight: 500; }
   .section-heading { align-items: baseline; gap: 12px; }
   .section-heading > span { padding-top: 4px; text-align: right; font-size: 9px; }
   .stories { padding: 30px 0 48px; }
+  .story-filter-panel { display: block; width: auto; margin-top: 18px; }
+  .story-filters { grid-template-columns: 1fr; gap: 16px; height: auto; margin-top: 12px; padding: 16px; border-radius: 4px; }
+  .filter-group { display: grid; gap: 8px; font-size: 10px; }
+  .story-filter-count { white-space: normal; }
   .story-grid { grid-template-columns: 1fr; gap: 18px; margin-top: 18px; }
   .story-link { aspect-ratio: 4 / 4.6; }
   .story-caption { right: 12px; bottom: 12px; left: 12px; gap: 8px; }
