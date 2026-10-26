@@ -116,7 +116,7 @@
     <li class="story-card" data-weather="sunny" data-month="2026-05" data-country="South Korea" style="--story-color:#54758b">
       <a class="story-link" href="/huegrove/posts/blue-hour/" aria-label="The blue hour by the water">
         <span class="story-photo" aria-hidden="true">
-          <span class="canvas-image cover-image"><img src="https://postfiles.pstatic.net/MjAyNjA5MTlfMzEg/MDAxNzg5ODA1ODkxNzU2.EDs8prA5NH05AoWN6M9hxs7ap-MXu6zmglyk3sn2lBYg.ZVk_IvKoZWEYgTlcPMz0xaqGaW2kLuXsC0K-L-oHP0Yg.JPEG/20260821_064959.jpg?type=w580" alt="" loading="lazy"><canvas data-canvas-image aria-hidden="true"></canvas></span>
+          <span class="canvas-image cover-image"><canvas data-canvas-image data-image-src="/huegrove/media/20261011_110616.jpg" role="img" aria-label="이미지설명"></canvas></span>
         </span>
         <span class="story-caption">
           <span class="story-colors" aria-label="Color palette"><span class="color-chip" style="--chip-color:#54758b"></span><span class="color-chip" style="--chip-color:#b7b6a4"></span><span class="color-chip" style="--chip-color:#d4aa80"></span></span>
@@ -164,9 +164,6 @@
     <script>
       (() => {
         for (const canvas of document.querySelectorAll("canvas[data-canvas-image]")) {
-          const image = canvas.previousElementSibling;
-          if (!(image instanceof HTMLImageElement)) continue;
-
           const drawToCanvas = () => {
             if (!image.naturalWidth || !image.naturalHeight) return;
             const scale = Math.min(1, 1600 / Math.max(image.naturalWidth, image.naturalHeight));
@@ -178,12 +175,11 @@
             canvas.parentElement.classList.add("is-ready");
           };
 
-          for (const element of [image, canvas]) {
-            element.addEventListener("contextmenu", (event) => event.preventDefault());
-            element.addEventListener("dragstart", (event) => event.preventDefault());
-          }
-          if (image.complete) drawToCanvas();
-          else image.addEventListener("load", drawToCanvas, { once: true });
+          const image = new Image();
+          canvas.addEventListener("contextmenu", (event) => event.preventDefault());
+          canvas.addEventListener("dragstart", (event) => event.preventDefault());
+          image.addEventListener("load", drawToCanvas, { once: true });
+          image.src = canvas.dataset.imageSrc;
         }
       })();
     </script>

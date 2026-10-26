@@ -108,9 +108,6 @@
     <script>
       (() => {
         for (const canvas of document.querySelectorAll("canvas[data-canvas-image]")) {
-          const image = canvas.previousElementSibling;
-          if (!(image instanceof HTMLImageElement)) continue;
-
           const drawToCanvas = () => {
             if (!image.naturalWidth || !image.naturalHeight) return;
             const scale = Math.min(1, 1600 / Math.max(image.naturalWidth, image.naturalHeight));
@@ -122,12 +119,11 @@
             canvas.parentElement.classList.add("is-ready");
           };
 
-          for (const element of [image, canvas]) {
-            element.addEventListener("contextmenu", (event) => event.preventDefault());
-            element.addEventListener("dragstart", (event) => event.preventDefault());
-          }
-          if (image.complete) drawToCanvas();
-          else image.addEventListener("load", drawToCanvas, { once: true });
+          const image = new Image();
+          canvas.addEventListener("contextmenu", (event) => event.preventDefault());
+          canvas.addEventListener("dragstart", (event) => event.preventDefault());
+          image.addEventListener("load", drawToCanvas, { once: true });
+          image.src = canvas.dataset.imageSrc;
         }
       })();
     </script>
