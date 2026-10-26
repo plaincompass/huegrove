@@ -109,7 +109,7 @@ h1, h2 { font-family: "Playfair Display", Georgia, serif; font-weight: 500; }
 .post-navigation a { color: var(--muted); text-decoration: none; }
 .post-navigation a:hover, .back-link:hover { color: var(--accent); }
 
-@media (max-width: 760px) {
+@media (max-width: 768px) {
   .site-shell { width: min(100% - 32px, 560px); }
   .site-header { min-height: 72px; }
   .header-note { display: none; }
