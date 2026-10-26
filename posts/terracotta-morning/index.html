@@ -62,7 +62,9 @@
         <p class="visit-availability">Visit details unconfirmed</p>
         <p class="sample-notice">A visual demo · a mood note, not a factual place guide</p>
       </header>
-      <div class="post-art" aria-hidden="true"><span></span><i></i></div>
+      <div class="post-art">
+        <span aria-hidden="true"></span><i aria-hidden="true"></i>
+      </div>
       <div class="post-palette" role="img" aria-label="Color palette: #c87958, #e1bd98, #78816a, #78816b">
         <span class="color-chip" style="--chip-color:#c87958" title="#c87958"></span><span class="color-chip" style="--chip-color:#e1bd98" title="#e1bd98"></span><span class="color-chip" style="--chip-color:#78816a" title="#78816a"></span><span class="color-chip" style="--chip-color:#78816b" title="#78816b"></span>
       </div>
@@ -101,6 +103,35 @@
           }
           count.textContent = `Showing ${visible} of ${cards.length}`;
         });
+      })();
+    </script>
+    <script>
+      (() => {
+        const images = document.querySelectorAll(".story-photo img, .post-art img, .post-body img");
+        for (const image of images) {
+          const drawToCanvas = () => {
+            if (!image.naturalWidth || !image.naturalHeight) return;
+            const scale = Math.min(1, 1600 / Math.max(image.naturalWidth, image.naturalHeight));
+            const canvas = document.createElement("canvas");
+            canvas.className = image.className;
+            canvas.width = Math.round(image.naturalWidth * scale);
+            canvas.height = Math.round(image.naturalHeight * scale);
+            canvas.setAttribute("role", "img");
+            if (image.alt) canvas.setAttribute("aria-label", image.alt);
+            canvas.addEventListener("contextmenu", (event) => event.preventDefault());
+            canvas.addEventListener("dragstart", (event) => event.preventDefault());
+
+            const context = canvas.getContext("2d");
+            if (!context) return;
+            context.drawImage(image, 0, 0, canvas.width, canvas.height);
+            image.replaceWith(canvas);
+          };
+
+          image.addEventListener("contextmenu", (event) => event.preventDefault());
+          image.addEventListener("dragstart", (event) => event.preventDefault());
+          if (image.complete) drawToCanvas();
+          else image.addEventListener("load", drawToCanvas, { once: true });
+        }
       })();
     </script>
 </body>

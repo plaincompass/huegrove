@@ -116,7 +116,7 @@
     <li class="story-card" data-weather="sunny" data-month="2026-05" data-country="South Korea" style="--story-color:#54758b">
       <a class="story-link" href="/huegrove/posts/blue-hour/" aria-label="The blue hour by the water">
         <span class="story-photo" aria-hidden="true">
-          <span class="story-art"></span><span class="story-sun"></span>
+          <img src="https://postfiles.pstatic.net/MjAyNjA5MTlfMzEg/MDAxNzg5ODA1ODkxNzU2.EDs8prA5NH05AoWN6M9hxs7ap-MXu6zmglyk3sn2lBYg.ZVk_IvKoZWEYgTlcPMz0xaqGaW2kLuXsC0K-L-oHP0Yg.JPEG/20260821_064959.jpg?type=w580" alt="" loading="lazy">
         </span>
         <span class="story-caption">
           <span class="story-colors" aria-label="Color palette"><span class="color-chip" style="--chip-color:#54758b"></span><span class="color-chip" style="--chip-color:#b7b6a4"></span><span class="color-chip" style="--chip-color:#d4aa80"></span></span>
@@ -159,6 +159,35 @@
           }
           count.textContent = `Showing ${visible} of ${cards.length}`;
         });
+      })();
+    </script>
+    <script>
+      (() => {
+        const images = document.querySelectorAll(".story-photo img, .post-art img, .post-body img");
+        for (const image of images) {
+          const drawToCanvas = () => {
+            if (!image.naturalWidth || !image.naturalHeight) return;
+            const scale = Math.min(1, 1600 / Math.max(image.naturalWidth, image.naturalHeight));
+            const canvas = document.createElement("canvas");
+            canvas.className = image.className;
+            canvas.width = Math.round(image.naturalWidth * scale);
+            canvas.height = Math.round(image.naturalHeight * scale);
+            canvas.setAttribute("role", "img");
+            if (image.alt) canvas.setAttribute("aria-label", image.alt);
+            canvas.addEventListener("contextmenu", (event) => event.preventDefault());
+            canvas.addEventListener("dragstart", (event) => event.preventDefault());
+
+            const context = canvas.getContext("2d");
+            if (!context) return;
+            context.drawImage(image, 0, 0, canvas.width, canvas.height);
+            image.replaceWith(canvas);
+          };
+
+          image.addEventListener("contextmenu", (event) => event.preventDefault());
+          image.addEventListener("dragstart", (event) => event.preventDefault());
+          if (image.complete) drawToCanvas();
+          else image.addEventListener("load", drawToCanvas, { once: true });
+        }
       })();
     </script>
 </body>
