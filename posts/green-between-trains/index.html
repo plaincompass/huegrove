@@ -105,27 +105,5 @@
         });
       })();
     </script>
-    <script>
-      (() => {
-        for (const canvas of document.querySelectorAll("canvas[data-canvas-image]")) {
-          const drawToCanvas = () => {
-            if (!image.naturalWidth || !image.naturalHeight) return;
-            const scale = Math.min(1, 1600 / Math.max(image.naturalWidth, image.naturalHeight));
-            canvas.width = Math.round(image.naturalWidth * scale);
-            canvas.height = Math.round(image.naturalHeight * scale);
-            const context = canvas.getContext("2d");
-            if (!context) return;
-            context.drawImage(image, 0, 0, canvas.width, canvas.height);
-            canvas.parentElement.classList.add("is-ready");
-          };
-
-          const image = new Image();
-          canvas.addEventListener("contextmenu", (event) => event.preventDefault());
-          canvas.addEventListener("dragstart", (event) => event.preventDefault());
-          image.addEventListener("load", drawToCanvas, { once: true });
-          image.src = canvas.dataset.imageSrc;
-        }
-      })();
-    </script>
 </body>
 </html>
