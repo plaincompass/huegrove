@@ -126,7 +126,7 @@ h1, h2 { font-family: "Playfair Display", Georgia, serif; font-weight: 500; }
 .post-mood { color: var(--muted); font-size: 13px; letter-spacing: .06em; }
 .post-art { min-height: clamp(250px, 45vw, 440px); border-radius: 2px; }
 .post-art span { top: 14%; right: 20%; width: clamp(54px, 9vw, 94px); height: clamp(54px, 9vw, 94px); }
-.post-body { max-width: 590px; margin: 54px auto; font-family: "Playfair Display", Georgia, serif; font-size: 19px; line-height: 1.9; }
+.post-body { max-width: 590px; margin: 16px auto; font-family: "Playfair Display", Georgia, serif; font-size: 19px; line-height: 1.9; }
 .post-body p { margin: 0 0 1.4em; }
 .post-body img { max-width: 100%; height: auto; }
 .location-map { max-width: 600px; margin: 0 auto 54px; }
