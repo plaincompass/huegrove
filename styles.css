@@ -129,6 +129,11 @@ h1, h2 { font-family: "Playfair Display", Georgia, serif; font-weight: 500; }
 .post-body { max-width: 590px; margin: 16px auto; font-family: "Playfair Display", Georgia, serif; font-size: 19px; line-height: 1.9; }
 .post-body p { margin: 0 0 1.4em; }
 .post-body img { max-width: 100%; height: auto; }
+.post-faq { max-width: 590px; margin: 38px auto 42px; padding-top: 24px; border-top: 1px solid var(--line); }
+.post-faq h2 { margin: 0 0 22px; font-size: 26px; }
+.post-faq .faq-item + .faq-item { margin-top: 24px; }
+.post-faq .faq-item h3 { margin: 0 0 6px; font-size: 16px; }
+.post-faq .faq-item p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.7; }
 .location-map { max-width: 600px; margin: 0 auto 54px; }
 .location-map-heading { display: flex; align-items: start; flex-direction: column; gap: 12px; margin-bottom: 16px; }
 .location-map-heading h2 { margin: 7px 0 4px; font-size: 24px; }
