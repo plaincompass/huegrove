@@ -92,7 +92,8 @@
         if (!form || !count || cards.length === 0) return;
 
         const filters = [...form.querySelectorAll("select[data-filter]")];
-        form.addEventListener("change", () => {
+        const reset = form.querySelector(".story-filter-reset");
+        const updateCards = () => {
           let visible = 0;
           for (const card of cards) {
             const matches = filters.every((filter) => (
@@ -102,6 +103,11 @@
             if (matches) visible += 1;
           }
           count.textContent = `Showing ${visible} of ${cards.length}`;
+        };
+        form.addEventListener("change", updateCards);
+        reset?.addEventListener("click", () => {
+          for (const filter of filters) filter.value = "";
+          updateCards();
         });
       })();
     </script>

@@ -68,7 +68,9 @@ h1, h2 { font-family: "Playfair Display", Georgia, serif; font-weight: 500; }
 .story-filter-toggle:checked ~ .story-filters { display: grid; }
 .filter-group { display: grid; min-width: 0; gap: 8px; color: var(--muted); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; }
 .filter-group select { min-width: 0; width: 100%; padding: 6px 24px 6px 9px; border: 1px solid var(--line); border-radius: 16px; background: var(--surface); color: var(--ink); font: inherit; font-size: 10px; letter-spacing: normal; text-transform: none; }
+.story-filter-actions { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .story-filter-count { margin: 0; color: var(--muted); font-size: 10px; }
+.story-filter-reset { padding: 6px 12px; border: 1px solid var(--line); border-radius: 16px; background: var(--surface); color: var(--ink); cursor: pointer; font: inherit; font-size: 10px; }
 .story-grid { display: grid; grid-template-columns: 1fr; gap: 18px; margin: 18px 0 0; padding: 0; list-style: none; }
 .story-card { min-width: 0; }
 .story-card[hidden] { display: none; }
