@@ -122,5 +122,20 @@
         });
       })();
     </script>
+    <script>
+      (() => {
+        const protectedImages = ".story-photo img, .post-page img";
+        for (const image of document.querySelectorAll(protectedImages)) {
+          image.draggable = false;
+        }
+        for (const eventName of ["contextmenu", "dragstart", "selectstart"]) {
+          document.addEventListener(eventName, (event) => {
+            if (event.target instanceof Element && event.target.closest(protectedImages)) {
+              event.preventDefault();
+            }
+          }, true);
+        }
+      })();
+    </script>
 </body>
 </html>
